@@ -6,8 +6,6 @@
 //
 //각 테스트 케이스는 한 줄로 이루어져 있으며, 각 줄에 A와 B가 주어진다. (0 < A, B < 10)
 //
-//입력의 마지막에는 0 두 개가 들어온다.
-//
 //출력
 //각 테스트 케이스마다 A + B를 출력한다.
 
@@ -17,20 +15,12 @@ using namespace std;
 
 int main()
 {
-	int a;
-	int b;
-	bool Zero = false;
+    int a, b;
 
-	while (Zero == false)
-	{
-		cin >> a >> b;
-		if (a == 0 && b == 0)
-		{
-			Zero = true;
-			break;
-		}
-		cout << a + b << endl;
-	}
+    while (cin >> a >> b)
+    {
+        cout << a + b << endl;
+    }
 
-	return 0;
+    return 0;
 }
