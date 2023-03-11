@@ -6,43 +6,33 @@ using namespace std;
 
 int main()
 {
-    int CaseCount;
-    int StudentNumber;
-    int Score[1000] = {};
-    float Average = 0;
-    float AverageStd[1000] = {};
+    int WordNumber = 0;
+    string Word;
 
-    cout << fixed;
-    cout.precision(3);
+    cin >> Word;
 
-    cin >> CaseCount;
-
-    for (int i = 0; i < CaseCount; i++)
+    for (int i = 0; i < Word.length(); i++)
     {
-        int SumScore = 0;
-        cin >> StudentNumber;
-
-        for (int j = 0; j < StudentNumber; j++)
-        {
-            int ScoreCin;
-            cin >> ScoreCin;
-            Score[j] = ScoreCin;
-            SumScore += ScoreCin;
-
-            if (j == StudentNumber - 1)
-                Average = (SumScore / StudentNumber);
-        }
-
-        for (int q = 0; q < StudentNumber; q++)
-        {
-            if (Score[q] > Average)
-                AverageStd[i] = AverageStd[i] + 1.0f;
-        }
-        AverageStd[i] = AverageStd[i] / StudentNumber * 100;
+        WordNumber++;
+        if (Word[i] == 'c' && Word[i + 1] == '=')
+            i++;
+        else if (Word[i] == 'c' && Word[i + 1] == '-')
+            i++;
+        else if (Word[i] == 'd' && Word[i + 1] == 'z' && Word[i + 2] == '=')
+            i = i + 2;
+        else if (Word[i] == 'd' && Word[i + 1] == '-')
+            i++;
+        else if (Word[i] == 'l' && Word[i + 1] == 'j')
+            i++;
+        else if (Word[i] == 'n' && Word[i + 1] == 'j')
+            i++;
+        else if (Word[i] == 's' && Word[i + 1] == '=')
+            i++;
+        else if (Word[i] == 'z' && Word[i + 1] == '=')
+            i++;
     }
 
-    for (int i = 0; i < CaseCount; i++)
-        cout << AverageStd[i] << "%" << endl;;
+    cout << WordNumber << endl;
 
     return 0;
 }
