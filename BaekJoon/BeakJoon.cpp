@@ -1,44 +1,48 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 int main()
 {
-    int Alphabet[26] = {};
-    int Most = 0;
-    int Count = 0;
-    bool MostDouble;
-    string Word;
+    int CaseCount;
+    int StudentNumber;
+    int Score[1000] = {};
+    float Average = 0;
+    float AverageStd[1000] = {};
 
-    cin >> Word;
+    cout << fixed;
+    cout.precision(3);
 
-    for (int i = 0; i < Word.length(); i++)
+    cin >> CaseCount;
+
+    for (int i = 0; i < CaseCount; i++)
     {
-        if (Word[i] >= 'a')
-            Alphabet[Word[i] - 'a']++;
-        else
-            Alphabet[Word[i] - 'A']++;
-    }
+        int SumScore = 0;
+        cin >> StudentNumber;
 
-    for (int i = 0; i < 26; i++)
-    {
-        if (Count < Alphabet[i])
+        for (int j = 0; j < StudentNumber; j++)
         {
-            Count = Alphabet[i];
-            Most = i;
-            MostDouble = false;
+            int ScoreCin;
+            cin >> ScoreCin;
+            Score[j] = ScoreCin;
+            SumScore += ScoreCin;
+
+            if (j == StudentNumber - 1)
+                Average = (SumScore / StudentNumber);
         }
-        else if (Count == Alphabet[i])
-            MostDouble = true;
+
+        for (int q = 0; q < StudentNumber; q++)
+        {
+            if (Score[q] > Average)
+                AverageStd[i] = AverageStd[i] + 1.0f;
+        }
+        AverageStd[i] = AverageStd[i] / StudentNumber * 100;
     }
 
-    if (MostDouble)
-        cout << "?" << endl;
-    else if (Most >= 26)
-        cout << (char)(Most - 26 + 'A') << endl;
-    else
-        cout << (char)(Most + 'A') << endl;
+    for (int i = 0; i < CaseCount; i++)
+        cout << AverageStd[i] << "%" << endl;;
 
     return 0;
 }
