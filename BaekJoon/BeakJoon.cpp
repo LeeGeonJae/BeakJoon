@@ -6,33 +6,49 @@ using namespace std;
 
 int main()
 {
-    int WordNumber = 0;
-    string Word;
+    vector<vector<int>> A;
+    vector<vector<int>> B;
+    vector<int> C;
+    vector<vector<int>> Sum;
+    int Number;
+    int Size;
+    int Size2;
 
-    cin >> Word;
+    cin >> Size >> Size2;
 
-    for (int i = 0; i < Word.length(); i++)
+    for (int i = 0; i < Size; i++)
     {
-        WordNumber++;
-        if (Word[i] == 'c' && Word[i + 1] == '=')
-            i++;
-        else if (Word[i] == 'c' && Word[i + 1] == '-')
-            i++;
-        else if (Word[i] == 'd' && Word[i + 1] == 'z' && Word[i + 2] == '=')
-            i = i + 2;
-        else if (Word[i] == 'd' && Word[i + 1] == '-')
-            i++;
-        else if (Word[i] == 'l' && Word[i + 1] == 'j')
-            i++;
-        else if (Word[i] == 'n' && Word[i + 1] == 'j')
-            i++;
-        else if (Word[i] == 's' && Word[i + 1] == '=')
-            i++;
-        else if (Word[i] == 'z' && Word[i + 1] == '=')
-            i++;
+        A.push_back(C);
+        for (int j = 0; j < Size2; j++)
+        {
+            cin >> Number;
+            A[i].push_back(Number);
+        }
     }
 
-    cout << WordNumber << endl;
+    for (int i = 0; i < Size; i++)
+    {
+        B.push_back(C);
+        for (int j = 0; j < Size2; j++)
+        {
+            cin >> Number;
+            B[i].push_back(Number);
+
+        }
+    }
+
+    for (int i = 0; i < Size; i++)
+    {
+        Sum.push_back(C);
+
+        for (int j = 0; j < Size2; j++)
+        {
+            Sum[i].push_back(B[i][j] + A[i][j]);
+
+            cout << Sum[i][j] << " ";
+        }
+        cout << endl;
+    }
 
     return 0;
 }
