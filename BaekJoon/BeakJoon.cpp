@@ -1,28 +1,35 @@
 #include <iostream>
-#include <string>
 #include <vector>
 
 using namespace std;
 
-int main()
-{
-    string Word[5] = {};
+const int WIDTH = 101;
+const int HEIGHT = 101;
 
-    for (int i = 0; i < 5; i++)
-    {
-        cin >> Word[i];
-    }
+int main() {
+    int paperCount;
+    cin >> paperCount;
 
-    for (int i = 0; i < 15; i++)
+    vector<vector<bool>> canvas(HEIGHT, vector<bool>(WIDTH, false));
+    int blackArea = 0;
+
+    for (int p = 0; p < paperCount; p++) 
     {
-        for (int j = 0; j < 5; j++)
+        int x, y;
+        cin >> x >> y;
+
+        for (int i = y; i < y + 10; i++) 
         {
-            if (i > Word[j].length())
-                continue;
-            else
-                cout << Word[j][i];
+            for (int j = x; j < x + 10; j++) 
+            {
+                if (!canvas[i][j]) {
+                    canvas[i][j] = true;
+                    blackArea++;
+                }
+            }
         }
     }
 
+    cout << blackArea << endl;
     return 0;
 }
