@@ -6,30 +6,23 @@ using namespace std;
 
 int main()
 {
-    int Number[9][9] = {};
-    int NumberInput;
-    int BigNumber = 0;
-    int Width;
-    int High;
+    string Word[5] = {};
 
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < 5; i++)
     {
-        for (int j = 0; j < 9; j++)
-        {
-            cin >> NumberInput;
-            Number[i][j] = NumberInput;
-
-            if (BigNumber < Number[i][j])
-            {
-                BigNumber = Number[i][j];
-                Width = i + 1;
-                High = j + 1;
-            }
-        }
+        cin >> Word[i];
     }
 
-    cout << BigNumber << endl;
-    cout << Width << " " << High << endl;
+    for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (i > Word[j].length())
+                continue;
+            else
+                cout << Word[j][i];
+        }
+    }
 
     return 0;
 }
