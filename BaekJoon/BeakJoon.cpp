@@ -3,33 +3,43 @@
 
 using namespace std;
 
-const int WIDTH = 101;
-const int HEIGHT = 101;
 
-int main() {
-    int paperCount;
-    cin >> paperCount;
+int main() 
+{
+    int NumberOne = 1;
+    int NumberTwo = 1;
+    vector<int> Case;
+    int i = 0;
 
-    vector<vector<bool>> canvas(HEIGHT, vector<bool>(WIDTH, false));
-    int blackArea = 0;
-
-    for (int p = 0; p < paperCount; p++) 
+    while (NumberOne != 0 && NumberTwo != 0)
     {
-        int x, y;
-        cin >> x >> y;
+        cin >> NumberOne >> NumberTwo;
 
-        for (int i = y; i < y + 10; i++) 
+        if (NumberOne > NumberTwo)
         {
-            for (int j = x; j < x + 10; j++) 
-            {
-                if (!canvas[i][j]) {
-                    canvas[i][j] = true;
-                    blackArea++;
-                }
-            }
+            if (NumberOne % NumberTwo == 0)
+                Case.push_back(1);
+            else
+                Case.push_back(3);
+        }
+        else if (NumberOne < NumberTwo)
+        {
+            if (NumberTwo % NumberOne == 0)
+                Case.push_back(2);
+            else
+                Case.push_back(3);
         }
     }
 
-    cout << blackArea << endl;
+    for (int j = 0; j < Case.size(); j++)
+    {
+        if (Case[j] == 1)
+            cout << "multiple" << endl;
+        else if (Case[j] == 2)
+            cout << "factor" << endl;
+        else
+            cout << "neither" << endl;
+    }
+
     return 0;
 }
