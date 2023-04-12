@@ -4,23 +4,29 @@
 
 using namespace std;
 
-long long solution(int a, int b) 
+int solution(int num) 
 {
-    long long answer = 0;
+    int answer = 0;
+    double number = num;
 
-    if (a < b)
-        for (int i = a; i <= b; i++)
-            answer += i;
-    else
-        for (int i = b; i <= a; i++)
-            answer += i;
+    while (number != 1.0)
+    {
+        if ((int)number % 2 == 0)
+            number /= 2.0;
+        else
+            number = number * 3.0 + 1;
 
+        answer++;
+
+        if (answer == 500)
+            return -1;
+    }
     return answer;
 }
 
 int main() 
 {
-    cout << solution(3, 5);
+    cout << solution(626331);
 
     return 0;
 }
