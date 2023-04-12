@@ -1,32 +1,34 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <cmath>
 
 using namespace std;
 
-int solution(int num) 
+string solution(vector<string> seoul) 
 {
-    int answer = 0;
-    double number = num;
+    string answer = "";
+    int Count = 0;
 
-    while (number != 1.0)
+    for (int i = 0; i < seoul.size(); i++)
     {
-        if ((int)number % 2 == 0)
-            number /= 2.0;
-        else
-            number = number * 3.0 + 1;
-
-        answer++;
-
-        if (answer == 500)
-            return -1;
+        if (seoul[i] == "Kim")
+        {
+            Count = i;
+            break;
+        }
     }
+    
+    answer.push_back(Count + '0');
+
+    answer = "김서방은 " + to_string(Count) + "에 있다";
+
     return answer;
 }
 
 int main() 
 {
-    cout << solution(626331);
+    cout << solution({"jane", "jane", "jane", "jane", "jane", "jane", "Kim", "jane", "jane", "jane"});
 
     return 0;
 }
